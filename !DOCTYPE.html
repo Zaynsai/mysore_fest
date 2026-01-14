@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mysuru Cultural Fest 2026 - Event Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #d4a373;
+            --secondary-color: #f8f5f0;
+            --dark-color: #2c1810;
+            --accent-color: #b8860b;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #fffaf0 100%);
+            color: var(--dark-color);
+            line-height: 1.7;
+        }
+        .hero-section {
+            background: linear-gradient(rgba(44,24,16,0.7), rgba(44,24,16,0.7)), url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI4MDAiIHZpZXdCb3g9IjAgMCAxMjAwIDgwMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iNjAwIiBjeT0iNDAwIiByPSI0MDAiIGZpbGw9IiNERDRBMzczIiBmaWxsLW9wYWNpdHk9IjAuMyIvPgo8L3N2Zz4K') center/cover;
+            color: white;
+            padding: 120px 0;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1.5" fill="white" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
+            opacity: 0.3;
+        }
+        .section-title {
+            position: relative;
+            margin-bottom: 40px;
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+        .card-custom {
+            border: none;
+            box-shadow: 0 15px 35px rgba(212,163,115,0.15);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+        }
+        .card-custom:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(212,163,115,0.25);
+        }
+        .gallery-img {
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .gallery-img:hover {
+            transform: scale(1.05);
+        }
+        .table-custom {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        .table-custom th {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            font-weight: 600;
+            border: none;
+        }
+        .table-custom td {
+            border-color: rgba(0,0,0,0.05);
+            vertical-align: middle;
+        }
+        .form-floating-custom label {
+            color: var(--dark-color);
+            font-weight: 500;
+        }
+        .btn-gradient {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border: none;
+            border-radius: 50px;
+            padding: 12px 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(212,163,115,0.3);
+        }
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(212,163,115,0.4);
+            color: white;
+        }
+        .progress-custom {
+            height: 12px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.5);
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .progress-bar {
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 10px;
+        }
+        footer {
+            background: linear-gradient(135deg, var(--dark-color), #3c2f27);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 80px 0;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+        .ornament {
+            position: absolute;
+            font-size: 2rem;
+            color: var(--primary-color);
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="hero-section text-center position-relative">
+        <div class="ornament position-absolute top-0 start-0" style="top: 20%; left: 5%;"><i class="bi bi-flower3"></i></div>
+        <div class="ornament position-absolute bottom-0 end-0" style="bottom: 20%; right: 5%;"><i class="bi bi-flower3"></i></div>
+        <div class="container fade-in-up">
+            <h1 class="display-4 fw-bold mb-4">Mysuru Cultural Fest 2026</h1>
+            <p class="lead mb-5 mx-auto" style="max-width: 600px;">Join the grand celebration of Karnataka's rich heritage with music, dance, crafts, and royal traditions at the heart of Mysuru. Nada Habba awaits!</p>
+            <div class="d-flex flex-column flex-md-row gap-3 justify-content-center">
+                <a href="#schedule" class="btn btn-light btn-lg px-5">View Schedule</a>
+                <a href="#register" class="btn btn-outline-light btn-lg px-5">Register Now</a>
+            </div>
+            <div class="progress mt-5 mx-auto" style="width: 80%; height: 8px;">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">Registrations: 65%</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm" style="margin-top: -100px; z-index: 10;">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-decoration-none" href="#" style="color: var(--primary-color); font-size: 1.5rem;">
+                <i class="bi bi-flower3 me-2"></i>Mysuru Fest
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#schedule">Schedule</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#register">Register</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container-fluid px-lg-5">
+        <!-- Schedule Section -->
+        <section id="schedule" class="my-5">
+            <h2 class="section-title text-center">Event Schedule</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-custom table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Event</th>
+                                    <th>Time</th>
+                                    <th>Venue</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Jan 20</td>
+                                    <td>Flower Show & Food Mela</td>
+                                    <td>11 AM - 8 PM</td>
+                                    <td>Kuppanna Park</td>
+                                    <td><span class="badge bg-success">Open</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Jan 21</td>
+                                    <td>Yuva Dasara Concerts</td>
+                                    <td>6 PM - 10 PM</td>
+                                    <td>Mysore Palace Grounds</td>
+                                    <td><span class="badge bg-warning text-dark">Soon</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Jan 22</td>
+                                    <td>Craft Exhibition</td>
+                                    <td>10 AM - 9 PM</td>
+                                    <td>Exhibition Grounds</td>
+                                    <td><span class="badge bg-info">Register</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Jan 25</td>
+                                    <td>Torchlight Parade</td>
+                                    <td>7 PM - 10 PM</td>
+                                    <td>Chamundi Hills</td>
+                                    <td><span class="badge bg-secondary">TBA</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="alert alert-info mt-4 text-center">
+                        <i class="bi bi-info-circle me-2"></i>Download full schedule PDF <a href="#" class="alert-link">here</a>.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="my-5">
+            <h2 class="section-title text-center">Photo Gallery</h2>
+            <div class="row g-4">
+                                <div class="col-md-4 col-sm-6">
+                    <div class="card card-custom overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=400&h=250&fit=crop&crop=center" class="card-img-top gallery-img" alt="Cultural Dance">
+                        <div class="card-body">
+                            <h5 class="card-title">Folk Dance</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="card card-custom overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=250&fit=crop&crop=center" class="card-img-top gallery-img" alt="Palace Lighting">
+                        <div class="card-body">
+                            <h5 class="card-title">Palace Illumination</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="card card-custom overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=400&h=250&fit=crop&crop=center" class="card-img-top gallery-img" alt="Art Exhibition">
+                        <div class="card-body">
+                            <h5 class="card-title">Art & Crafts</h5>
+                        </div>
+                    </div>
+                </div>
+                                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Registration Section -->
+        <section id="register" class="my-5">
+            <h2 class="section-title text-center">Register / Feedback</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card card-custom p-4">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5><i class="bi bi-person-plus me-2 text-primary"></i>Event Registration</h5>
+                                <form novalidate>
+                                    <div class="mb-3">
+                                        <input type="text" class="form-control" placeholder="Full Name" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="email" class="form-control" placeholder="Email" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="tel" class="form-control" placeholder="Phone">
+                                    </div>
+                                    <div class="mb-3">
+                                        <select class="form-select" required>
+                                            <option selected disabled>Select Event</option>
+                                            <option>Flower Show</option>
+                                            <option>Yuva Dasara</option>
+                                            <option>Craft Exhibition</option>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-gradient w-100 mb-3">Register Now</button>
+                                </form>
+                            </div>
+                            <div class="col-md-6">
+                                <h5><i class="bi bi-chat-square-text me-2 text-success"></i>Quick Feedback</h5>
+                                <form>
+                                    <div class="mb-3">
+                                        <select class="form-select">
+                                            <option>Event Experience</option>
+                                            <option>Venue & Facilities</option>
+                                            <option>Organization</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <textarea class="form-control" rows="3" placeholder="Your feedback..."></textarea>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="rating" id="star5" value="5">
+                                            <label class="form-check-label" for="star5">5★</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="rating" id="star4" value="4">
+                                            <label class="form-check-label" for="star4">4★</label>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-outline-success w-100 mt-2">Submit Feedback</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="bi bi-flower3 me-2"></i>Mysuru Cultural Fest 2026</h5>
+                    <p>Organized by Mysuru Tourism Board | Celebrating Karnataka's Heritage</p>
+                </div>
+                <div class="col-md-6">
+                    <p>&copy; 2026 All rights reserved. | <a href="#" class="text-white-50">Privacy Policy</a> | <a href="#" class="text-white-50">Terms</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form validation
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', e => {
+                if (!form.checkValidity()) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            });
+        });
+
+        // Animate on scroll
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        });
+        document.querySelectorAll('.card-custom, .table-custom').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
